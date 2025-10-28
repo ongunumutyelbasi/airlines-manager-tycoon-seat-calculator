@@ -132,8 +132,8 @@ const SEAT_WEIGHTS = {
 
 const SEAT_SPACE_MULTIPLIERS = {
   E: 1,
-  B: 2,
-  F: 5,
+  B: 1.80338266394,
+  F: 4.20197044351,
 };
 
 const MAX_ROUND_TRIPS = 8;       /* Default limit for standard view */
