@@ -906,9 +906,6 @@ const App: React.FC = () => {
                                 <th style={{ width: '10%' }}>FIRST</th>
                                 <th style={{ width: '10%' }}>CARGO</th>
                                 <th style={{ width: '15%' }}>
-                                    <Maximize2 size={14} style={{ verticalAlign: 'middle', marginRight: '0.25rem' }} /> Space
-                                </th>
-                                <th style={{ width: '15%' }}>
                                     <Package size={14} style={{ verticalAlign: 'middle', marginRight: '0.25rem' }} /> Payload
                                 </th>
                                 <th style={{ width: '10%', textAlign: 'center' }}>Valid?</th>
@@ -939,7 +936,6 @@ const App: React.FC = () => {
                                         <td>{config.B.toLocaleString()}</td>
                                         <td>{config.F.toLocaleString()}</td>
                                         <td>{config.C.toFixed(2)}</td>
-                                        <td>{config.totalSpaceUsed.toLocaleString()}</td>
                                         <td>{config.totalPayload.toFixed(2)}</td>
                                         <td style={{ textAlign: 'center' }}>
                                             {renderLimitsCheck(config)}
