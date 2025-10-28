@@ -125,7 +125,7 @@ const PLANES_DB = [
 
 const SEAT_WEIGHTS = {
   E: 0.1,          /* Economy seat weight (Tonnes) */
-  B: 0.12458253968253967, /* Business seat weight (Tonnes) - High Precision */
+  B: 0.12498942917, /* Business seat weight (Tonnes) - High Precision */
   F: 0.15,         /* First seat weight (Tonnes) */
   C: 1,            /* Cargo unit weight (Tonnes) */
 };
