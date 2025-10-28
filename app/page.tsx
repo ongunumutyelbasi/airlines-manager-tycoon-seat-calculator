@@ -9,6 +9,7 @@ import { Plane, Users, Briefcase, Gem, Package, Clock, Maximize2, Database, Chev
 // Hardcoded sample database of common passenger aircraft (Modeled for Airlines Manager Tycoon)
 // Format: { model: string, maxCapacity: number (All-Y), maxPayload: number (Tonnes) }
 const PLANES_DB = [
+  { model: 'Custom Aircraft (Enter Below)', maxCapacity: 0, maxPayload: 0 },
   { model: 'Aérospatiale Caravelle 12', maxCapacity: 130, maxPayload: 13.0 },
   { model: 'Aérospatiale Concorde', maxCapacity: 128, maxPayload: 12.8 },
   { model: 'Airbus A220-100', maxCapacity: 135, maxPayload: 15.1 },
@@ -93,7 +94,6 @@ const PLANES_DB = [
   { model: 'Bombardier Q-400', maxCapacity: 80, maxPayload: 8.5 },
   { model: 'Comac C909', maxCapacity: 90, maxPayload: 10.0 },
   { model: 'Comac C919', maxCapacity: 174, maxPayload: 18.9 },
-  { model: 'Custom Aircraft (Enter Below)', maxCapacity: 0, maxPayload: 0 },
   { model: 'Dassault Aviation F900-B', maxCapacity: 19, maxPayload: 2.0 },
   { model: 'Dornier D328-100', maxCapacity: 32, maxPayload: 4.8 },
   { model: 'Embraer E190-E2', maxCapacity: 114, maxPayload: 11.4 },
