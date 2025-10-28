@@ -1,41 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+    /*
+     * This file only contains the necessary Tailwind directives.
+     * The font import has been moved or is handled inline in App.jsx.
+     */
 
-/* Import centralized theme variables */
-@import './theme.css';
-
-/* Local fonts: edit sources to match files you place in public/fonts/ */
-@import './_fonts.generated.css';
-/* Example:
-@font-face {
-  font-family: 'InterLocal';
-  src: url('/fonts/Inter-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-*/
-
-html, body, #__next {
-  height: 100%;
-}
-
-body {
-  font-family: var(--font-sans);
-  background: var(--color-bg);
-  color: var(--color-text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Utility helpers that use CSS variables */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  background: var(--color-primary);
-  color: var(--color-primary-contrast);
-}
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
