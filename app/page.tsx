@@ -59,7 +59,7 @@ interface ConfigRow {
   totalSpaceUsed: number;
   isPayloadValid: boolean;
   isCapacityValid: boolean;
-  limitingFactor: 'Payload' | 'Capacity' | 'Both' | null;
+  limitingFactor: 'Payload' | 'Capacity' | 'Payload & Capacity' | null;
   remainingTimeMinutes?: number; // Optional field for when time limiting is enabled
 }
 
@@ -389,7 +389,7 @@ const App: React.FC = () => {
   }, [demand]);
 
 
-  // 3. Calculation results are memoized
+  // 3. Calculation results are memorized
   const configurations: ConfigRow[] = useMemo(() => {
     // Ensure the state values are parsed correctly as numbers
     const hours = parseInt(flightTimeHours) || 0;
@@ -427,9 +427,9 @@ const App: React.FC = () => {
         const isPayloadValid = parsedMaxPayload === 0 || seats.totalPayload <= parsedMaxPayload;
         const isCapacityValid = parsedMaxCapacity === 0 || seats.totalSpaceUsed <= parsedMaxCapacity;
         
-        let limitingFactor: 'Payload' | 'Capacity' | 'Both' | null = null;
+        let limitingFactor: 'Payload' | 'Capacity' | 'Payload & Capacity' | null = null;
         if (!isPayloadValid && !isCapacityValid) {
-            limitingFactor = 'Both';
+            limitingFactor = 'Payload & Capacity';
         } else if (!isPayloadValid) {
             limitingFactor = 'Payload';
         } else if (!isCapacityValid) {
