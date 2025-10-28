@@ -11,7 +11,12 @@ import { Plane, Users, Briefcase, Gem, Package, Clock, Maximize2, Database, Chev
 const PLANES_DB = [
   { model: 'Custom Aircraft (Enter Below)', maxCapacity: 0, maxPayload: 0 },
   { model: 'Airbus A380-800', maxCapacity: 853, maxPayload: 89.2 },
+  { model: 'Boeing 747-8I', maxCapacity: 730, maxPayload: 76.0 },
+  { model: 'Boeing 747-400', maxCapacity: 660, maxPayload: 67.50 },
   { model: 'Airbus A350-1000', maxCapacity: 522, maxPayload: 56.1 },
+  { model: 'Airbus A350-900ULR', maxCapacity: 440, maxPayload: 44.0 },
+  { model: 'Airbus A350-900XWB', maxCapacity: 475, maxPayload: 48.0 },
+  { model: 'Boeing 777-300ER', maxCapacity: 550, maxPayload: 69.90 },
   { model: 'Airbus A321-200', maxCapacity: 220, maxPayload: 22.9 },
   { model: 'Boeing 737-800', maxCapacity: 189, maxPayload: 20.3 },
   { model: 'Boeing 787-9', maxCapacity: 330, maxPayload: 55.0 },
@@ -108,6 +113,16 @@ const calculateSeats = (parsedDemand: { [key: string]: number }, roundTrips: num
     totalPayload,
     totalSpaceUsed,
   };
+};
+
+/**
+ * Helper to convert total minutes back to h:m format for display.
+ */
+const formatTime = (totalMinutes: number) => {
+    if (totalMinutes < 0) return 'OVERTIME';
+    const h = Math.floor(totalMinutes / 60);
+    const m = totalMinutes % 60;
+    return `${h}h ${m}m`;
 };
 
 
@@ -271,6 +286,41 @@ const TimeDropdown: React.FC<TimeDropdownProps> = ({ label, value, onChange, opt
     );
 };
 
+/**
+ * Renders the visual indicator for the limits check column.
+ */
+const renderLimitsCheck = (config: ConfigRow) => {
+    if (!config.isPayloadValid && !config.isCapacityValid) {
+        return (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#B91C1C' }}>
+                <X size={18} />
+                <span style={{ marginLeft: '0.3rem', fontSize: '0.75rem', fontWeight: 'bold' }}>BOTH</span>
+            </div>
+        );
+    }
+    if (!config.isPayloadValid) {
+        return (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#B91C1C' }}>
+                <X size={18} />
+                <span style={{ marginLeft: '0.3rem', fontSize: '0.75rem', fontWeight: 'bold' }}>PAYLOAD</span>
+            </div>
+        );
+    }
+    if (!config.isCapacityValid) {
+        return (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#B91C1C' }}>
+                <X size={18} />
+                <span style={{ marginLeft: '0.3rem', fontSize: '0.75rem', fontWeight: 'bold' }}>CAPACITY</span>
+            </div>
+        );
+    }
+    return (
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669' }}>
+            <Check size={18} />
+        </div>
+    );
+};
+
 
 {/* --- MAIN COMPONENT --- */}
 const App: React.FC = () => {
@@ -284,7 +334,7 @@ const App: React.FC = () => {
   });
   
   {/* State for selected aircraft and custom inputs */}
-  const [selectedPlaneModel, setSelectedPlaneModel] = useState<string>(PLANES_DB[4].model); // Default to Boeing 737-800
+  const [selectedPlaneModel, setSelectedPlaneModel] = useState<string>(PLANES_DB[4].model); // Default to Airbus A321-200
   const [customCapacity, setCustomCapacity] = useState<string>('0');
   const [customPayload, setCustomPayload] = useState<string>('0');
 
@@ -439,11 +489,13 @@ const App: React.FC = () => {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
+            font-size: 0.875rem; /* Small font size for density */
         }
         .config-table th, .config-table td {
             padding: 0.5rem 0.75rem;
             text-align: left;
             border-bottom: 1px solid #E5E7EB;
+            vertical-align: middle;
         }
         .config-table th {
             font-size: 0.75rem;
@@ -465,15 +517,6 @@ const App: React.FC = () => {
         .config-table tbody tr {
              transition: background-color 150ms;
         }
-        /* Remove border-radius on TR cells to allow continuous coloring of the invalid background */
-        /* .config-table tbody tr td:first-child {
-            border-top-left-radius: 0.5rem;
-            border-bottom-left-radius: 0.5rem;
-        }
-        .config-table tbody tr td:last-child {
-            border-top-right-radius: 0.5rem;
-            border-bottom-right-radius: 0.5rem;
-        } */
         
       `}} />
       <div style={{ 
@@ -750,99 +793,61 @@ const App: React.FC = () => {
                 </p>
               </div>
             ) : (
-                <div style={{ overflowX: 'auto' }}>
-                    <table className="config-table" style={{ minWidth: '800px' }}>
+                <div style={{ maxHeight: '400px', overflowY: 'auto', borderRadius: '0.5rem', border: '1px solid #E5E7EB' }}>
+                    <table className="config-table">
                         <thead>
                             <tr>
-                                {/* Completed Table Headers */}
-                                <th style={{ paddingLeft: '1.25rem', borderTopLeftRadius: '0.5rem' }}>RT</th>
-                                <th><Users size={14} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: '4px' }} />Econ</th>
-                                <th><Briefcase size={14} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: '4px' }} />Bus</th>
-                                <th><Gem size={14} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: '4px' }} />First</th>
-                                <th><Package size={14} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: '4px' }} />Cargo</th>
-                                <th style={{ textAlign: 'center' }}><Maximize2 size={14} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: '4px' }} />Space</th>
-                                <th style={{ textAlign: 'center' }}>Payload (Tn)</th>
-                                {configurations[0]?.remainingTimeMinutes !== undefined && <th><Clock size={14} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: '4px' }} />Time Left</th>}
-                                <th style={{ borderTopRightRadius: '0.5rem', textAlign: 'center' }}>Status</th>
+                                <th style={{ width: '8%' }}>
+                                    <Clock size={14} style={{ verticalAlign: 'middle', marginRight: '0.25rem' }} /> RT
+                                </th>
+                                <th style={{ width: '10%' }}>E</th>
+                                <th style={{ width: '10%' }}>B</th>
+                                <th style={{ width: '10%' }}>F</th>
+                                <th style={{ width: '10%' }}>C (Tn)</th>
+                                <th style={{ width: '15%' }}>
+                                    <Maximize2 size={14} style={{ verticalAlign: 'middle', marginRight: '0.25rem' }} /> Space
+                                </th>
+                                <th style={{ width: '15%' }}>
+                                    <Package size={14} style={{ verticalAlign: 'middle', marginRight: '0.25rem' }} /> Payload
+                                </th>
+                                <th style={{ width: '10%', textAlign: 'center' }}>Valid?</th>
+                                {isTimeLimited && (
+                                    <th style={{ width: '12%' }}>
+                                        <Timer size={14} style={{ verticalAlign: 'middle', marginRight: '0.25rem' }} /> Time Left
+                                    </th>
+                                )}
                             </tr>
                         </thead>
                         <tbody>
-                            {configurations.map(config => {
-                                // Skip the error row if time is exceeded
-                                if (config.roundTrips === -1) return null;
-
-                                const isInvalid = !config.isPayloadValid || !config.isCapacityValid;
+                            {configurations.map((config, index) => {
+                                const isRowInvalid = !config.isPayloadValid || !config.isCapacityValid;
                                 
-                                // Color based on the primary limiting factor
-                                let bgColor = 'transparent';
-                                if (isInvalid) {
-                                  // Light red for invalid configurations
-                                  bgColor = '#FEF2F2'; 
-                                } else if (config.roundTrips === MAX_ROUND_TRIPS || (isTimeLimited && config.remainingTimeMinutes !== undefined && config.remainingTimeMinutes < calculatedCycleTime)) {
-                                  // Light yellow if maximized or time-limited near capacity
-                                  bgColor = '#FEF9C3'; 
-                                }
+                                // Apply specific styling if invalid, otherwise stick to default dark text
+                                const rowStyle: React.CSSProperties = isRowInvalid ? { 
+                                    backgroundColor: '#FEF2F2', 
+                                    color: '#991B1C', 
+                                    fontWeight: '600' 
+                                } : {
+                                    color: darkTextColor // Default text color
+                                };
 
                                 return (
-                                    <tr key={config.roundTrips} style={{ backgroundColor: bgColor }}>
-                                        {/* 1. Round Trips */}
-                                        <td style={{ paddingLeft: '1.25rem', fontWeight: '700', color: primaryColor }}>
-                                            {config.roundTrips}
-                                        </td>
-                                        {/* 2-5. Required Seats/Cargo */}
-                                        <td style={{ color: darkTextColor }}>{config.E.toLocaleString()}</td>
-                                        <td style={{ color: darkTextColor }}>{config.B.toLocaleString()}</td>
-                                        <td style={{ color: darkTextColor }}>{config.F.toLocaleString()}</td>
-                                        <td style={{ color: darkTextColor }}>{config.C.toFixed(2)}</td>
-                                        {/* 6. Total Capacity Used */}
+                                    <tr key={index} style={rowStyle}>
+                                        <td style={{ fontWeight: '700' }}>{config.roundTrips}</td>
+                                        <td>{config.E.toLocaleString()}</td>
+                                        <td>{config.B.toLocaleString()}</td>
+                                        <td>{config.F.toLocaleString()}</td>
+                                        <td>{config.C.toFixed(2)}</td>
+                                        <td>{config.totalSpaceUsed.toLocaleString()}</td>
+                                        <td>{config.totalPayload.toFixed(2)}</td>
                                         <td style={{ textAlign: 'center' }}>
-                                            <span style={{ 
-                                                fontWeight: '600', 
-                                                color: config.totalSpaceUsed > currentAircraft.maxCapacity && currentAircraft.maxCapacity > 0 ? '#DC2626' : darkTextColor 
-                                            }}>
-                                                {config.totalSpaceUsed.toLocaleString()}
-                                            </span>
-                                            {currentAircraft.maxCapacity > 0 && 
-                                                <span style={{ fontSize: '0.75rem', color: '#6B7280' }}>
-                                                    /{currentAircraft.maxCapacity.toLocaleString()}
-                                                </span>
-                                            }
+                                            {renderLimitsCheck(config)}
                                         </td>
-                                        {/* 7. Total Payload */}
-                                        <td style={{ textAlign: 'center' }}>
-                                            <span style={{ 
-                                                fontWeight: '600', 
-                                                color: config.totalPayload > currentAircraft.maxPayload && currentAircraft.maxPayload > 0 ? '#DC2626' : darkTextColor
-                                            }}>
-                                                {config.totalPayload.toFixed(2)}
-                                            </span>
-                                            {currentAircraft.maxPayload > 0 &&
-                                                <span style={{ fontSize: '0.75rem', color: '#6B7280' }}>
-                                                    /{currentAircraft.maxPayload.toFixed(2)}
-                                                </span>
-                                            }
-                                        </td>
-                                        {/* 8. Remaining Time */}
-                                        {config.remainingTimeMinutes !== undefined && (
-                                            <td style={{ textAlign: 'center', color: darkTextColor }}>
-                                                {/* Format time remaining as HH:MM */}
-                                                {Math.floor(config.remainingTimeMinutes / 60).toString().padStart(2, '0')}:
-                                                {(config.remainingTimeMinutes % 60).toString().padStart(2, '0')}
+                                        {isTimeLimited && (
+                                            <td style={{ color: config.remainingTimeMinutes !== undefined && config.remainingTimeMinutes < 0 ? '#B91C1C' : darkTextColor }}>
+                                                {config.remainingTimeMinutes !== undefined ? formatTime(config.remainingTimeMinutes) : 'N/A'}
                                             </td>
                                         )}
-                                        {/* 9. Status / Limiting Factor */}
-                                        <td style={{ textAlign: 'center' }}>
-                                            {config.isPayloadValid && config.isCapacityValid ? (
-                                                <span style={{ color: '#059669', fontWeight: '700', fontSize: '0.875rem', display: 'flex', alignItems: 'center', justifyContent: 'center', columnGap: '0.25rem' }}>
-                                                    <Check size={16} /> FIT
-                                                </span>
-                                            ) : (
-                                                <span style={{ color: '#DC2626', fontWeight: '700', fontSize: '0.875rem', display: 'flex', alignItems: 'center', justifyContent: 'center', columnGap: '0.25rem' }}>
-                                                    <X size={16} /> 
-                                                    {config.limitingFactor === 'Both' ? 'OVERLOAD' : config.limitingFactor?.toUpperCase()}
-                                                </span>
-                                            )}
-                                        </td>
                                     </tr>
                                 );
                             })}
@@ -850,14 +855,10 @@ const App: React.FC = () => {
                     </table>
                 </div>
             )}
-          </div>
-      </div>
-      
-      {/* Footer / Credits */}
-      <footer style={{ position: 'fixed', bottom: '0.5rem', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', color: '#6B7280', fontSize: '0.75rem' }}>
-          Built for Airlines Manager Tycoon. Check plane stats in-game for absolute accuracy.
-      </footer>
-    </div>
+            
+          </div> {/* End of section 3 padding div */}
+        </div> {/* End of Inner Card */}
+      </div> {/* End of Fixed Position Container */}
     </React.Fragment>
   );
 };
