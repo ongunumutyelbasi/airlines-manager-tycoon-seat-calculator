@@ -731,7 +731,7 @@ const App: React.FC = () => {
                         <div style={{ display: 'flex', gap: '1rem' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', flex: '1 1 0%' }}>
                               <label htmlFor="customCapacity" style={{ fontSize: '0.8125rem', fontWeight: '500', marginBottom: '0.2rem', display: 'flex', alignItems: 'center', columnGap: '0.375rem', color: '#4B5563' }}>
-                                  Max Capacity
+                                  Max Passenger Capacity
                               </label>
                               <input
                                 id="customCapacity"
