@@ -800,10 +800,10 @@ const App: React.FC = () => {
                                 <th style={{ width: '8%' }}>
                                     <Clock size={14} style={{ verticalAlign: 'middle', marginRight: '0.25rem' }} /> RT
                                 </th>
-                                <th style={{ width: '10%' }}>E</th>
-                                <th style={{ width: '10%' }}>B</th>
-                                <th style={{ width: '10%' }}>F</th>
-                                <th style={{ width: '10%' }}>C (Tn)</th>
+                                <th style={{ width: '10%' }}>ECONOMY</th>
+                                <th style={{ width: '10%' }}>BUSINESS</th>
+                                <th style={{ width: '10%' }}>FIRST</th>
+                                <th style={{ width: '10%' }}>CARGO</th>
                                 <th style={{ width: '15%' }}>
                                     <Maximize2 size={14} style={{ verticalAlign: 'middle', marginRight: '0.25rem' }} /> Space
                                 </th>
