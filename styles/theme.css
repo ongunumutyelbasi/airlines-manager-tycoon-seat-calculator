@@ -1,0 +1,29 @@
+:root {
+  /* Colors - edit these to change site colors */
+  --color-bg: #f8fafc; /* light gray */
+  --color-text: #0f172a; /* near-black */
+  --color-primary: #0ea5e9; /* sky blue */
+  --color-primary-contrast: #ffffff;
+  --color-secondary: #7c3aed; /* violet */
+  --color-muted: #64748b;
+
+  /* Spacing / sizes */
+  --radius: 0.5rem;
+
+  /* Fonts - edit to point to your uploaded local fonts or system fallbacks */
+  --font-sans: 'RedHatDisplay-Regular', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-heading: 'RedHatDisplay-Regular', var(--font-sans);
+}
+
+/* Example dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0b1220;
+    --color-text: #e6eef8;
+  }
+}
+
+/* Instructions:
+   1. Place your font files in public/fonts/ and add @font-face entries in globals.css.
+   2. Edit the variables above to change colors and fonts globally.
+*/

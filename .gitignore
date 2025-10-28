@@ -1,0 +1,11 @@
+node_modules
+.next
+.env
+dist
+coverage
+npm-debug.log
+pnpm-lock.yaml
+yarn.lock
+
+# Generated font css
+styles/_fonts.generated.css
