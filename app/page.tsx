@@ -683,7 +683,7 @@ const App: React.FC = () => {
                     {/* Aircraft Dropdown Container */}
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                         <label htmlFor="plane-select" style={{ fontSize: '0.8125rem', fontWeight: '500', marginBottom: '0.2rem', display: 'flex', alignItems: 'center', columnGap: '0.375rem', color: '#4B5563' }}>
-                            <Database size={16} color="#059669" />
+                            <Plane size={16} color="#059669" />
                             Choose Aircraft Model
                         </label>
                         {/* Wrapper for the Select and Icon */}
