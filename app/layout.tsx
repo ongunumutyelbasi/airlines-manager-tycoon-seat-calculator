@@ -2,8 +2,8 @@ import '../styles/globals.css'
 import type { ReactNode } from 'react'
 
 export const metadata = {
-  title: 'Airlines Seat Calculator',
-  description: 'Demo app with centralized theme file for fonts and colors',
+  title: 'Airlines Manager Tycoon - Seat Calculator',
+  description: 'Select an aircraft to automatically load its limits, then enter your route demand. The calculator will help you find the optimal seating configuration within the aircraft\'s constraints.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
