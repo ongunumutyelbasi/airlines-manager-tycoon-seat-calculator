@@ -25,7 +25,7 @@ interface ISubItem {
 
 const items: ISidebarItem[] = [
   {
-    name: "Seat Configuration Calculator",
+    name: "Seat Configurator",
     path: "/",
     icon: Armchair,
   },
