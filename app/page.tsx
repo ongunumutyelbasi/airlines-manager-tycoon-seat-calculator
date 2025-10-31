@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useCallback } from 'react';
 {/* Using Lucide icons: Users, Briefcase, Gem (for First), Package (for Cargo), Clock, Plane, Maximize2 (for Capacity), Database (for Plane DB), ChevronDown, ChevronUp (NEW) */}
-import { Plane, Users, Briefcase, Gem, Package, Clock, Maximize2, Database, ChevronDown, Check, X, Timer } from 'lucide-react';
+import { Plane, Users, Briefcase, Gem, Package, Clock, DollarSign, Settings, Maximize2, Database, ChevronDown, Check, X, Timer } from 'lucide-react';
 
 {/* --- CONSTANTS --- */}
 
@@ -144,6 +144,52 @@ const MAX_DAILY_MINUTES = 1440;  /* 24 hours */
 // Dropdown options for time selection
 const HOURS_OPTIONS = Array.from({ length: 23 }, (_, i) => 2 + i); // 2 to 24 hours
 const MINUTES_OPTIONS = [0, 15, 30, 45]; // 00, 15, 30, 45 minutes
+
+const SidebarLink: React.FC<{ href: string; icon: React.ReactNode; text: string }> = ({ href, icon, text }) => (
+  <a
+    href={href}
+    className="flex items-center gap-3 p-3 text-gray-200 rounded-lg hover:bg-gray-700 transition-colors"
+    aria-label={text}
+  >
+    {icon}
+    <span className="text-sm font-medium">{text}</span>
+  </a>
+);
+
+/**
+ * Sidebar Navigation Component
+ */
+const Sidebar: React.FC = () => (
+  // Fixed width, dark background, sticky and full height
+  <aside className="hidden md:flex flex-col w-64 bg-gray-900 border-r border-gray-800 p-4 shadow-xl sticky top-0 h-screen">
+    <div className="flex items-center gap-3 p-2 mb-8 border-b border-gray-800/50 pb-4">
+      <Plane className="w-8 h-8 text-indigo-400" />
+      <h1 className="text-xl font-bold text-white tracking-wider">Airlines Tycoon</h1>
+    </div>
+    <nav className="flex-1 space-y-2">
+      <SidebarLink
+        href="#calculator"
+        icon={<DollarSign className="w-5 h-5" />}
+        text="Cost Calculator"
+      />
+      <SidebarLink
+        href="#planes"
+        icon={<Database className="w-5 h-5" />}
+        text="Aircraft Database"
+      />
+      <SidebarLink
+        href="#settings"
+        icon={<Settings className="w-5 h-5" />}
+        text="Settings"
+      />
+    </nav>
+    <div className="mt-auto pt-4 border-t border-gray-800/50">
+      <p className="text-xs text-gray-500">
+        <span className="font-semibold text-gray-400">v1.0</span>
+      </p>
+    </div>
+  </aside>
+);
 
 {/* --- TYPES --- */}
 
