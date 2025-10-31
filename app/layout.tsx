@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import type { ReactNode } from 'react'
+import Sidebar from "../components/sidebar";
 
 export const metadata = {
   title: 'Airlines Manager Tycoon - Seat Calculator',
@@ -10,6 +11,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <Sidebar />
         <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
           <main className="mx-auto max-w-3xl">
             {children}
