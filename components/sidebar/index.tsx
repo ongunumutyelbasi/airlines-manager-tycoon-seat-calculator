@@ -6,6 +6,8 @@ import {
   CircleUserRound,
   Settings,
   WalletCards,
+  Armchair,
+  Plane,
 } from "lucide-react";
 import SidebarItem from "./item";
 
@@ -23,11 +25,11 @@ interface ISubItem {
 
 const items: ISidebarItem[] = [
   {
-    name: "Dashboard",
+    name: "Seat Configuration Calculator",
     path: "/",
-    icon: LayoutDashboard,
+    icon: Armchair,
   },
-  {
+  /* {
     name: "Transaction",
     path: "/transaction",
     icon: BadgeDollarSign,
@@ -59,8 +61,8 @@ const items: ISidebarItem[] = [
         name: "Notifications",
         path: "/settings/notifications",
       },
-    ],
-  },
+    ], 
+  },*/
 ];
 
 const Sidebar = () => {
