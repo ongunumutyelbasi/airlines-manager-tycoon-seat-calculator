@@ -227,15 +227,9 @@ const CalculatorContent: React.FC = () => {
     const isValid = config.isPayloadValid && config.isCapacityValid;
     const color = isValid ? '#059669' : '#B91C1C';
     const Icon = isValid ? Check : X;
-    const tooltipText = isValid ? "Valid Configuration (Capacity and Payload are within limits)" : "Invalid Configuration (Capacity or Payload exceeds limits)";
-    
     return (
-      <div 
-        style={{ color }} 
-        className="flex justify-center"
-        title={tooltipText} // FIX: Use standard HTML title attribute on the wrapper div
-      >
-        <Icon size={16} /> {/* FIX: Removed the problematic 'title' prop */}
+      <div style={{ color }} className="flex justify-center">
+        <Icon size={16} title={isValid ? "Valid Configuration" : "Invalid Configuration"} />
       </div>
     );
   };
