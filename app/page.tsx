@@ -17,118 +17,9 @@ import {
 
 /* --- CONSTANTS --- */
 const PLANES_DB = [
-  { model: 'Custom Aircraft (Enter Below)', maxCapacity: 0, maxPayload: 0 },
-  { model: 'Aérospatiale Caravelle 12', maxCapacity: 130, maxPayload: 13.0 },
-  { model: 'Aérospatiale Concorde', maxCapacity: 128, maxPayload: 12.8 },
-  { model: 'Airbus A220-100', maxCapacity: 135, maxPayload: 15.1 },
-  { model: 'Airbus A220-300', maxCapacity: 160, maxPayload: 18.71 },
-  { model: 'Airbus A300-600R', maxCapacity: 360, maxPayload: 36.0 },
-  { model: 'Airbus A310-300', maxCapacity: 275, maxPayload: 27.5 },
-  { model: 'Airbus A318-100', maxCapacity: 136, maxPayload: 13.6 },
-  { model: 'Airbus A319-100', maxCapacity: 160, maxPayload: 16.00 },
-  { model: 'Airbus A319-100LR', maxCapacity: 160, maxPayload: 16.00 },
-  { model: 'Airbus A319neo', maxCapacity: 160, maxPayload: 16.00 },
-  { model: 'Airbus A320-200', maxCapacity: 180, maxPayload: 18.29 },
-  { model: 'Airbus A320neo', maxCapacity: 195, maxPayload: 19.65 },
-  { model: 'Airbus A321-200', maxCapacity: 220, maxPayload: 22.0 },
-  { model: 'Airbus A321XLR', maxCapacity: 244, maxPayload: 24.4 },
-  { model: 'Airbus A321neo', maxCapacity: 244, maxPayload: 24.4 },
-  { model: 'Airbus A321neo-LR', maxCapacity: 244, maxPayload: 24.9 },
-  { model: 'Airbus A330-200', maxCapacity: 406, maxPayload: 40.59 },
-  { model: 'Airbus A330-300', maxCapacity: 440, maxPayload: 56.0 },
-  { model: 'Airbus A330-800', maxCapacity: 406, maxPayload: 46.0 },
-  { model: 'Airbus A330-900', maxCapacity: 460, maxPayload: 46.0 },
-  { model: 'Airbus A340-200', maxCapacity: 420, maxPayload: 43.5 },
-  { model: 'Airbus A340-300', maxCapacity: 440, maxPayload: 44.0 },
-  { model: 'Airbus A340-500', maxCapacity: 475, maxPayload: 47.5 },
-  { model: 'Airbus A340-600', maxCapacity: 530, maxPayload: 55.6 },
-  { model: 'Airbus A350-1000', maxCapacity: 522, maxPayload: 56.1 },
-  { model: 'Airbus A350-900ULR', maxCapacity: 440, maxPayload: 44.0 },
-  { model: 'Airbus A350-900XWB', maxCapacity: 475, maxPayload: 48.0 },
-  { model: 'Airbus A380-800', maxCapacity: 853, maxPayload: 89.2 },
-  { model: 'ATR 42-500', maxCapacity: 50, maxPayload: 5.4 },
-  { model: 'ATR 42-600', maxCapacity: 50, maxPayload: 5.9 },
-  { model: 'ATR 72-500', maxCapacity: 74, maxPayload: 7.5 },
-  { model: 'ATR 72-600', maxCapacity: 74, maxPayload: 8.0 },
-  { model: 'Bae Systems Jetstream-41', maxCapacity: 30, maxPayload: 3.5 },
-  { model: 'Bae Systems RJ-85', maxCapacity: 118, maxPayload: 11.8 },
-  { model: 'Boeing 707-320C', maxCapacity: 219, maxPayload: 34.0 },
-  { model: 'Boeing 717-200', maxCapacity: 134, maxPayload: 14.5 },
-  { model: 'Boeing 737-200', maxCapacity: 136, maxPayload: 14.0 },
-  { model: 'Boeing 737-300', maxCapacity: 149, maxPayload: 16.1 },
-  { model: 'Boeing 737-400', maxCapacity: 189, maxPayload: 19.9 },
-  { model: 'Boeing 737-500', maxCapacity: 132, maxPayload: 15.2 },
-  { model: 'Boeing 737-600', maxCapacity: 132, maxPayload: 15.6 },
-  { model: 'Boeing 737-700', maxCapacity: 149, maxPayload: 17.5 },
-  { model: 'Boeing 737-700ER', maxCapacity: 149, maxPayload: 17.0 },
-  { model: 'Boeing 737-800', maxCapacity: 189, maxPayload: 20.3 },
-  { model: 'Boeing 737-800', maxCapacity: 189, maxPayload: 21.3 },
-  { model: 'Boeing 737-900ER', maxCapacity: 220, maxPayload: 23.0 },
-  { model: 'Boeing 737-MAX8', maxCapacity: 189, maxPayload: 18.9 },
-  { model: 'Boeing 737-MAX8-200', maxCapacity: 200, maxPayload: 20.0 },
-  { model: 'Boeing 737-MAX9', maxCapacity: 210, maxPayload: 22.0 },
-  { model: 'Boeing 747-100B', maxCapacity: 520, maxPayload: 52.0 },
-  { model: 'Boeing 747-200B', maxCapacity: 595, maxPayload: 68.0 },
-  { model: 'Boeing 747-300', maxCapacity: 608, maxPayload: 66.0 },
-  { model: 'Boeing 747-400', maxCapacity: 660, maxPayload: 67.50 },
-  { model: 'Boeing 747-8I', maxCapacity: 730, maxPayload: 76.0 },
-  { model: 'Boeing 757-200', maxCapacity: 239, maxPayload: 26.7 },
-  { model: 'Boeing 757-300', maxCapacity: 295, maxPayload: 31.0 },
-  { model: 'Boeing 767-200ER', maxCapacity: 290, maxPayload: 35.59 },
-  { model: 'Boeing 767-300ER', maxCapacity: 351, maxPayload: 43.8 },
-  { model: 'Boeing 767-400ER', maxCapacity: 409, maxPayload: 46.50 },
-  { model: 'Boeing 777-200', maxCapacity: 440, maxPayload: 57.4 },
-  { model: 'Boeing 777-200ER', maxCapacity: 440, maxPayload: 59.4 },
-  { model: 'Boeing 777-200LR', maxCapacity: 440, maxPayload: 64.0 },
-  { model: 'Boeing 777-300', maxCapacity: 550, maxPayload: 66.9 },
-  { model: 'Boeing 777-300ER', maxCapacity: 550, maxPayload: 69.9 },
-  { model: 'Boeing 787-10', maxCapacity: 440, maxPayload: 44.0 },
-  { model: 'Boeing 787-8', maxCapacity: 381, maxPayload: 43.3 },
-  { model: 'Boeing 787-9', maxCapacity: 420, maxPayload: 42.0 },
-  { model: 'Boeing B727-100', maxCapacity: 131, maxPayload: 13.8 },
-  { model: 'Boeing DC-3', maxCapacity: 32, maxPayload: 3.2 },
-  { model: 'Boeing DC8-55', maxCapacity: 189, maxPayload: 20.46 },
-  { model: 'Boeing DC8-73', maxCapacity: 259, maxPayload: 26.37 },
-  { model: 'Boeing MD-11', maxCapacity: 410, maxPayload: 52.6 },
-  { model: 'Boeing MD-83', maxCapacity: 167, maxPayload: 19.20 },
-  { model: 'Boeing MD-90-30', maxCapacity: 167, maxPayload: 19.00 },
-  { model: 'Bombardier CRJ-1000', maxCapacity: 104, maxPayload: 12.0 },
-  { model: 'Bombardier CRJ-200', maxCapacity: 50, maxPayload: 6.1 },
-  { model: 'Bombardier CRJ-550', maxCapacity: 57, maxPayload: 8.5 },
-  { model: 'Bombardier CRJ-700', maxCapacity: 78, maxPayload: 8.5 },
-  { model: 'Bombardier CRJ-900', maxCapacity: 90, maxPayload: 10.6 },
-  { model: 'Bombardier Q-200', maxCapacity: 40, maxPayload: 4.6 },
-  { model: 'Bombardier Q-300', maxCapacity: 56, maxPayload: 6.1 },
-  { model: 'Bombardier Q-400', maxCapacity: 80, maxPayload: 8.5 },
-  { model: 'Comac C909', maxCapacity: 90, maxPayload: 10.0 },
-  { model: 'Comac C919', maxCapacity: 174, maxPayload: 18.9 },
-  { model: 'Dassault Aviation F900-B', maxCapacity: 19, maxPayload: 2.0 },
-  { model: 'Dornier D328-100', maxCapacity: 32, maxPayload: 4.8 },
-  { model: 'Embraer E190-E2', maxCapacity: 114, maxPayload: 11.4 },
-  { model: 'Embraer E195-E2', maxCapacity: 146, maxPayload: 14.6 },
-  { model: 'Embraer EMB-120', maxCapacity: 30, maxPayload: 3.3 },
-  { model: 'Embraer ERJ-135', maxCapacity: 37, maxPayload: 4.5 },
-  { model: 'Embraer ERJ-140', maxCapacity: 44, maxPayload: 5.3 },
-  { model: 'Embraer ERJ-145', maxCapacity: 50, maxPayload: 5.8 },
-  { model: 'Embraer ERJ-145XR', maxCapacity: 50, maxPayload: 6.0 },
-  { model: 'Embraer ERJ-170', maxCapacity: 80, maxPayload: 9.8 },
-  { model: 'Embraer ERJ-175', maxCapacity: 88, maxPayload: 10.4 },
-  { model: 'Embraer ERJ-190', maxCapacity: 114, maxPayload: 13.1 },
-  { model: 'Embraer ERJ-195', maxCapacity: 124, maxPayload: 13.6 },
-  { model: 'Fokker F-100', maxCapacity: 122, maxPayload: 12.2 },
-  { model: 'Gulfstream G650', maxCapacity: 19, maxPayload: 2.9 },
-  { model: 'Ilyushin Il-114', maxCapacity: 64, maxPayload: 6.5 },
-  { model: 'Ilyushin Il-96-300', maxCapacity: 300, maxPayload: 40.0 },
-  { model: 'Ilyushin Il-96M', maxCapacity: 436, maxPayload: 45.0 },
-  { model: 'IPTN CN-235', maxCapacity: 44, maxPayload: 4.5 },
-  { model: 'Lockheed L-100', maxCapacity: 128, maxPayload: 23.2 },
-  { model: 'Lockheed L-1011-200', maxCapacity: 400, maxPayload: 46.0 },
-  { model: 'Lockheed L-1011-500', maxCapacity: 330, maxPayload: 41.0 },
-  { model: 'Lockheed L-1049G', maxCapacity: 106, maxPayload: 12.0 },
-  { model: 'Saab S-2000', maxCapacity: 58, maxPayload: 5.9 },
-  { model: 'Saab S-340B', maxCapacity: 37, maxPayload: 3.7 },
-  { model: 'Sukhoi SSJ-100-95', maxCapacity: 98, maxPayload: 12.2 },
-  { model: 'Tupolev TU-214-210', maxCapacity: 210, maxPayload: 25.20 },
+  { model: "Custom Aircraft (Enter Below)", maxCapacity: 0, maxPayload: 0 },
+  { model: "Airbus A320neo", maxCapacity: 195, maxPayload: 19.65 },
+  { model: "Boeing 737-800", maxCapacity: 189, maxPayload: 20.3 },
 ];
 
 const SEAT_WEIGHTS = { E: 0.1, B: 0.12498942917, F: 0.15, C: 1 };
@@ -437,102 +328,269 @@ const App: React.FC = () => {
 
   return (
     <>
-      {/* FONT IMPORT */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
           @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;600;700;800&display=swap');
-          html, body {
-            font-family: 'Red Hat Display', sans-serif;
-            margin: 0;
-            padding: 0;
-          }
-        `
-      }} />
-      
-      <div style={{
-        display: "flex",
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: "#F9FAFB",
-      }}>
-        
-        {/* SIDEBAR */}
-        <div style={{
-          width: "240px",
-          backgroundColor: "#111827",
-          color: "white",
+          html, body { font-family: 'Red Hat Display', sans-serif; margin:0; padding:0; }
+        `,
+        }}
+      />
+
+      <div
+        style={{
           display: "flex",
-          flexDirection: "column",
-          padding: "1.25rem",
-          boxShadow: "2px 0 8px rgba(0,0,0,0.2)"
-        }}>
-          <h2 style={{
-            fontSize: "1.4rem",
-            fontWeight: 800,
-            marginBottom: "2rem",
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "#F9FAFB",
+        }}
+      >
+        {/* SIDEBAR */}
+        <div
+          style={{
+            width: "240px",
+            backgroundColor: "#111827",
+            color: "white",
             display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-            color: "#E5E7EB"
-          }}>
+            flexDirection: "column",
+            padding: "1.25rem",
+            boxShadow: "2px 0 8px rgba(0,0,0,0.2)",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "1.4rem",
+              fontWeight: 800,
+              marginBottom: "2rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              color: "#E5E7EB",
+            }}
+          >
             <Plane size={22} color="#b4eb16" /> Configurator
           </h2>
-          
-          <Link href="/" style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.75rem",
-            color: "#E5E7EB",
-            textDecoration: "none",
-            padding: "0.6rem 0.9rem",
-            borderRadius: "0.5rem",
-            transition: "background 0.2s",
-          }} onMouseEnter={(e) => (e.currentTarget.style.background = "#1f2937")}
-             onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
-            <LayoutDashboard size={18} /> Dashboard
-          </Link>
 
-          <Link href="/settings" style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.75rem",
-            color: "#E5E7EB",
-            textDecoration: "none",
-            padding: "0.6rem 0.9rem",
-            borderRadius: "0.5rem",
-            transition: "background 0.2s",
-          }} onMouseEnter={(e) => (e.currentTarget.style.background = "#1f2937")}
-             onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
-            <Settings size={18} /> Settings
-          </Link>
+          <SidebarLink href="/" icon={<LayoutDashboard size={18} />} text="Dashboard" />
+          <SidebarLink href="/settings" icon={<Settings size={18} />} text="Settings" />
         </div>
 
         {/* MAIN CONTENT */}
-        <div style={{
-          flex: 1,
-          overflowY: "auto",
-          padding: "1.5rem",
-          backgroundColor: "white",
-        }}>
-          <h1 style={{
-            fontSize: "1.75rem",
-            fontWeight: 800,
-            color: "#1F2937",
-            marginBottom: "1.25rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-          }}>
+        <div
+          style={{
+            flex: 1,
+            overflowY: "auto",
+            padding: "1.5rem",
+            backgroundColor: "white",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "1.75rem",
+              fontWeight: 800,
+              color: "#1F2937",
+              marginBottom: "1.25rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+            }}
+          >
             <Plane size={22} color={primaryColor} /> Airlines Manager Configurator
           </h1>
-          
-          {/* MAIN TOOL (shortened for brevity; same logic as before) */}
-          {/* Your demand inputs, dropdowns, and table remain identical here */}
-          
+
+          {/* AIRCRAFT SELECTION */}
+          <div style={{ marginBottom: "1rem" }}>
+            <label>Choose Aircraft Model</label>
+            <select
+              value={selectedPlaneModel}
+              onChange={(e) => setSelectedPlaneModel(e.target.value)}
+              style={{
+                marginLeft: "0.5rem",
+                padding: "0.25rem",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+              }}
+            >
+              {PLANES_DB.map((p) => (
+                <option key={p.model}>{p.model}</option>
+              ))}
+            </select>
+          </div>
+
+          {selectedPlaneModel === "Custom Aircraft (Enter Below)" && (
+            <div style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}>
+              <InputField
+                label="Max Capacity"
+                keyName="capacity"
+                value={customCapacity}
+                onChange={(k, v) => handleCustomStatChange("capacity", v)}
+                icon={<Users size={14} />}
+              />
+              <InputField
+                label="Max Payload"
+                keyName="payload"
+                value={customPayload}
+                onChange={(k, v) => handleCustomStatChange("payload", v)}
+                icon={<Package size={14} />}
+              />
+            </div>
+          )}
+
+          {/* DEMAND INPUTS */}
+          <div style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}>
+            <InputField
+              icon={<Users size={16} color="#22C55E" />}
+              label="Economy"
+              keyName="E"
+              value={demand.E}
+              onChange={handleDemandChange}
+            />
+            <InputField
+              icon={<Briefcase size={16} color="#F59E0B" />}
+              label="Business"
+              keyName="B"
+              value={demand.B}
+              onChange={handleDemandChange}
+            />
+            <InputField
+              icon={<Gem size={16} color="#EF4444" />}
+              label="First"
+              keyName="F"
+              value={demand.F}
+              onChange={handleDemandChange}
+            />
+            <InputField
+              icon={<Package size={16} color="#3B82F6" />}
+              label="Cargo"
+              keyName="C"
+              value={demand.C}
+              onChange={handleDemandChange}
+              unit="Tn"
+            />
+          </div>
+
+          {/* TIME LIMIT */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              marginBottom: "1rem",
+            }}
+          >
+            <Clock size={16} />
+            <span>Limit Flights by Time</span>
+            <ToggleSwitch checked={isTimeLimited} onChange={setIsTimeLimited} />
+          </div>
+
+          {isTimeLimited && (
+            <div style={{ display: "flex", gap: "0.75rem", marginBottom: "1rem" }}>
+              <TimeDropdown
+                label="Hours (hh)"
+                value={flightTimeHours}
+                onChange={setFlightTimeHours}
+                options={HOURS_OPTIONS}
+              />
+              <TimeDropdown
+                label="Minutes (mm)"
+                value={flightTimeMinutes}
+                onChange={setFlightTimeMinutes}
+                options={MINUTES_OPTIONS}
+              />
+            </div>
+          )}
+
+          {/* RESULTS TABLE */}
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              fontSize: "0.875rem",
+            }}
+          >
+            <thead>
+              <tr style={{ background: "#F3F4F6" }}>
+                <th>RT</th>
+                <th>Economy</th>
+                <th>Business</th>
+                <th>First</th>
+                <th>Cargo</th>
+                <th>Payload</th>
+                <th>Valid?</th>
+                {isTimeLimited && <th>Time Left</th>}
+              </tr>
+            </thead>
+            <tbody>
+              {configurations.map((c, i) => (
+                <tr
+                  key={i}
+                  style={{
+                    textAlign: "center",
+                    borderBottom: "1px solid #E5E7EB",
+                    color: darkTextColor,
+                  }}
+                >
+                  <td>{c.roundTrips}</td>
+                  <td>{c.E}</td>
+                  <td>{c.B}</td>
+                  <td>{c.F}</td>
+                  <td>{c.C}</td>
+                  <td>{c.totalPayload.toFixed(2)}</td>
+                  <td
+                    style={{
+                      color:
+                        c.isPayloadValid && c.isCapacityValid
+                          ? "#059669"
+                          : "#B91C1C",
+                    }}
+                  >
+                    {c.isPayloadValid && c.isCapacityValid ? (
+                      <Check size={16} />
+                    ) : (
+                      <X size={16} />
+                    )}
+                  </td>
+                  {isTimeLimited && (
+                    <td>{formatTime(c.remainingTimeMinutes ?? 0)}</td>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>
   );
 };
+
+/* Sidebar Link Component */
+const SidebarLink = ({
+  href,
+  icon,
+  text,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  text: string;
+}) => (
+  <Link
+    href={href}
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "0.75rem",
+      color: "#E5E7EB",
+      textDecoration: "none",
+      padding: "0.6rem 0.9rem",
+      borderRadius: "0.5rem",
+      transition: "background 0.2s ease",
+      marginBottom: "0.5rem",
+    }}
+    onMouseEnter={(e) => (e.currentTarget.style.background = "#1f2937")}
+    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+  >
+    {icon} {text}
+  </Link>
+);
 
 export default App;
